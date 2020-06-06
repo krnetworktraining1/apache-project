@@ -1,0 +1,4 @@
+- name: install ssl
+  yum:
+      name: mod_ssl
+      state: installed

@@ -1,0 +1,9 @@
+- name:  include custom vars file
+  include_vars: redhat.yml
+
+
+- name: copy jinja file
+  template:
+     src: httpd.conf.j2
+     dest: "{{ web_conf }}"
+  notify: restart_apache

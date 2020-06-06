@@ -1,0 +1,31 @@
+- name: install httpd
+  yum:
+     name: "{{ web_svc }}"
+     state: installed
+
+
+
+
+- name: start  httpd
+  service:
+       name: "{{ web_svc }}"
+       state: started
+
+- name: copy file
+  copy:
+      src: abc.txt
+      dest: /tmp
+
+
+- name: copy  user files into /var/www/html
+  copy:
+      src: code/
+      dest: "{{ web_root }}"
+
+
+- name: include some other tasks files
+  import_tasks: apache.yml
+
+- name: include some other tasks files
+  import_tasks: ssl.yml
+
